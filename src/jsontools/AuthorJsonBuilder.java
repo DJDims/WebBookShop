@@ -10,7 +10,7 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
 public class AuthorJsonBuilder {
-        public JsonArray getAuthorsJsonArray(List<Author> listAuthor){
+    public JsonArray getAuthorsJsonArray(List<Author> listAuthor){
         JsonArrayBuilder jab = Json.createArrayBuilder();
         for(int i=0;i<listAuthor.size();i++){
             jab.add(getAuthorJsonObject(listAuthor.get(i)));
@@ -20,9 +20,9 @@ public class AuthorJsonBuilder {
     public JsonObject getAuthorJsonObject(Author author){
         JsonObjectBuilder job = Json.createObjectBuilder();
         job.add("id", author.getId());
-        job.add("name", author.getName());
-        job.add("surename", author.getSurename());
-        job.add("bornYear", author.getBornYear());
+        job.add("firstname", author.getFirstname());
+        job.add("lastname", author.getLastname());
+        job.add("birthYear", author.getBirthYear());
         return job.build();
     }
 }

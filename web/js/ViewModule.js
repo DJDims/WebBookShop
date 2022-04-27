@@ -50,12 +50,11 @@ class ViewModule{
             </div>
             <div class="card border-0 mb-3 mx-auto" style="max-width: 50rem;">
                 <div class="card-body row">
-                        <div class="form-group mb-4">
-                            <label for="select_authors" class=" col-form-label mt-2">Список авторов</label>
-                            <select class="col-sm-10 form-select form-control-plaintext" id="select_authors">
-                              
-                            </select>
-                        </div>
+                    <div class="form-group mb-4">
+                        <label for="select_authors" class=" col-form-label mt-2">Список авторов</label>
+                        <select class="col-sm-10 form-select form-control-plaintext" id="select_authors">
+                        </select>
+                    </div>
                 </div>
             </div>`;
         document.getElementById('btn_add_author').addEventListener('click',(e)=>{

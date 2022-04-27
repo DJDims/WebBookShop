@@ -1,4 +1,4 @@
-import {showBtnLogin, showBtnsMenu, hiddenBtnLogin, hiddenBtnsMenu} from './App.js';
+import {checkMenu} from './App.js';
 class LoginModule{
     
     sendCredential(){
@@ -8,8 +8,7 @@ class LoginModule{
             "login": login,
             "password": password,
         }
-        //Посылаем запрос а с паттерном 'login', методом POST и телом body в формате JSON
-        // возвращается обещание (Promise) со статусом "ожидание"
+
         let promise = fetch('login', {
             method: 'POST',
             headers: {
@@ -17,14 +16,12 @@ class LoginModule{
             },
             body: JSON.stringify(credendial) 
         })
-        // Обрабатываем обещание с помощью then
-        promise.then(response => response.json()) //переводим обещание в статус выполнено 
-                                                  // и преобразовываем JSON в JavaScript object
-               .then(response => {// обрабатываем object полученый из обещания
+
+        promise.then(response => response.json())
+               .then(response => {
                     document.getElementById('info').innerHTML = response.info;
                     if(response.auth){
-                        showBtnsMenu();
-                        hiddenBtnLogin();
+                        checkMenu();
                         document.getElementById('content').innerHTML = "";
                     }
                })

@@ -54,11 +54,11 @@ public class ManagerServlet extends HttpServlet {
                 }
                 
                 Author newAuthor = new Author();
-                newAuthor.setName(firstname);
-                newAuthor.setSurename(lastname);
-                newAuthor.setBornYear(Integer.parseInt(birthYear));
+                newAuthor.setFirstname(firstname);
+                newAuthor.setLastname(lastname);
+                newAuthor.setBirthYear(Integer.parseInt(birthYear));
                 authorFacade.create(newAuthor);
-                job.add("info", "Создан автор "+newAuthor.getName()+" "+newAuthor.getSurename())
+                job.add("info", "Создан автор "+newAuthor.getFirstname()+" "+newAuthor.getLastname())
                    .add("status",true);
                 try (PrintWriter out = response.getWriter()) {
                     out.println(job.build().toString());
@@ -67,9 +67,9 @@ public class ManagerServlet extends HttpServlet {
             case "/getListAuthors":
                 List<Author> listAuthors = authorFacade.findAll();
                 AuthorJsonBuilder ajb = new AuthorJsonBuilder();
-                job.add("status",true);
-                job.add("info","Создан массив авторов");
-                job.add("authors",ajb.getAuthorsJsonArray(listAuthors));
+                job.add("status", true);
+                job.add("info", "Создан массив авторов");
+                job.add("authors", ajb.getAuthorsJsonArray(listAuthors));
                 try (PrintWriter out = response.getWriter()) {
                     out.println(job.build().toString());
                 }
@@ -80,7 +80,7 @@ public class ManagerServlet extends HttpServlet {
                 String authorId = jsonObject.getString("authorId","");
                 Author author = authorFacade.find(Long.parseLong(authorId));
                 ajb = new AuthorJsonBuilder();
-                job.add("info", "Редактируем автора: "+author.getName()+" "+author.getSurename());
+                job.add("info", "Редактируем автора: "+author.getFirstname()+" "+author.getLastname());
                 job.add("status", true);
                 job.add("author", ajb.getAuthorJsonObject(author));
                 try (PrintWriter out = response.getWriter()) {
@@ -95,9 +95,9 @@ public class ManagerServlet extends HttpServlet {
                 lastname = jsonObject.getString("lastname","");
                 birthYear = jsonObject.getString("birthYear","");
                 Author updateAuthor = authorFacade.find(Long.parseLong(authorId));
-                updateAuthor.setBornYear(Integer.parseInt(birthYear));
-                updateAuthor.setSurename(lastname);
-                updateAuthor.setName(firstname);
+                updateAuthor.setFirstname(firstname);
+                updateAuthor.setLastname(lastname);
+                updateAuthor.setBirthYear(Integer.parseInt(birthYear));
                 authorFacade.edit(updateAuthor);
                 job.add("info", "Автор изменен");
                 job.add("status", true);

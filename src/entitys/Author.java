@@ -12,9 +12,9 @@ public class Author implements Serializable {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String surename;
-    private int bornYear;
+    private String firstname;
+    private String lastname;
+    private int birthYear;
 
     public Long getId() {
         return id;
@@ -24,28 +24,28 @@ public class Author implements Serializable {
         this.id = id;
     }
     
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public int getBornYear() {
-        return bornYear;
+    public int getBirthYear() {
+        return birthYear;
     }
 
-    public void setBornYear(int bornYear) {
-        this.bornYear = bornYear;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     @Override
@@ -53,11 +53,11 @@ public class Author implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("Author{")
                 .append("name=")
-                .append(name)
+                .append(firstname)
                 .append(", surename=")
-                .append(surename)
+                .append(lastname)
                 .append(", bornYear=")
-                .append(bornYear)
+                .append(birthYear)
                 .append('}');
         return sb.toString();
     }
@@ -66,9 +66,9 @@ public class Author implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + Objects.hashCode(this.surename);
-        hash = 59 * hash + this.bornYear;
+        hash = 59 * hash + Objects.hashCode(this.firstname);
+        hash = 59 * hash + Objects.hashCode(this.lastname);
+        hash = 59 * hash + this.birthYear;
         return hash;
     }
 
@@ -84,13 +84,13 @@ public class Author implements Serializable {
             return false;
         }
         final Author other = (Author) obj;
-        if (this.bornYear != other.bornYear) {
+        if (this.birthYear != other.birthYear) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.firstname, other.firstname)) {
             return false;
         }
-        if (!Objects.equals(this.surename, other.surename)) {
+        if (!Objects.equals(this.lastname, other.lastname)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
